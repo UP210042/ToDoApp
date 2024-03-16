@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+
+    <!-- Estilos Css -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section class="userselects">
+            <select id="select-users">
+                <option value="1">Rogelio</option>
+                <option value="2">Test 1</option>
+                <option value="3">Test 2</option>
+                <option value="4">Test 4</option>
+                <option value="5">Test 5</option>
+                <option value="6">Micaela</option>
+                <option value="7">Ester</option>
+                <option value="8">Mercedes</option>
+                <option value="9">Francisco Javier</option>
+                <option value="10">Elsa</option>
+                <option value="11">Agustin</option>
+                <option value="12">Mario</option>
+                <option value="13">Matias</option>
+                <option value="14">Irene</option>
+                <option value="15">Kevin</option>
+            </select>
+        </section>
+        <section class="user-container" id="user-container">
+            <!-- Elemento de listas como se deben de ver las tareas -->
+            <h3>Información del usuario seleccionado</h3>
+            <ul>
+                <li>Nombre completo: <span id="fullname">Nombre Apellido</span></li>
+                <li>Email: <span id="email">usuario@dominio.com</span></li>
+            </ul>
+            <button class="btn" id="btndisplay">
+                Mostrar lista de tareas
+            </button>
+        </section>
+        <section class="task-container" id="task-container">
+            <!-- Elemento de lista, para mostar las tareas -->
+            <h3>Lista de tareas del usuario</h3>
+            <ul id="task-list">
+                <li>
+                    <span>Nombre de la tarea</span>
+                    <input type="checkbox" checked>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        // Elementos HTML
+        const userSelect = document.getElementById('select-users');
+        const userContainer = document.getElementById('user-container');
+        const taskContainer = document.getElementById('task-container');
+        const displayButton = document.getElementById('btndisplay');
+        const fullNameElement = document.getElementById('fullname');
+        const emailElement = document.getElementById('email');
+        const taskListElement = document.getElementById('task-list');
+
+        // Event Listener para el cambio de usuario
+        userSelect.addEventListener('change', () => {
+            const userId = userSelect.value;
+            getUserInfo(userId);
+        });
+
+        // Event Listener para mostrar/ocultar la lista de tareas
+        displayButton.addEventListener('click', () => {
+            toggleTaskListVisibility();
+        });
+
+        // Función para obtener y mostrar la información del usuario
+        async function getUserInfo(userId) {
+            try {
+                const userInfo = await getUser(userId);
+                showUserInfo(userInfo);
+                const userTasks = await getTasks(userId);
+                showUserTasks(userTasks);
+            } catch (error) {
+                console.error('Error al obtener la información del usuario:', error);
+            }
+        }
+
+        // Función para mostrar la información del usuario
+        function showUserInfo(userInfo) {
+            fullNameElement.textContent = `${userInfo.firstname} ${userInfo.lastname}`;
+            emailElement.textContent = userInfo.email;
+        }
+
+        // Función para mostrar las tareas del usuario
+        function showUserTasks(tasks) {
+            taskListElement.innerHTML = ''; // Limpiar la lista de tareas
+
+            tasks.forEach(task => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<span>${task.id}. ${task.title}</span><input type="checkbox" ${task.completed ? 'checked' : ''}>`;
+                taskListElement.appendChild(listItem);
+            });
+        }
+
+        // Función para alternar la visibilidad de la lista de tareas
+        function toggleTaskListVisibility() {
+            taskContainer.style.display = taskContainer.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Función para obtener un usuario por su ID
+        function getUser(userId) {
+            return fetch('data/usuarios.json')
+                .then(resp => resp.json())
+                .then(users => users.find(user => user.id == userId));
+        }
+
+        // Función para obtener las tareas de un usuario por su ID
+        function getTasks(userId) {
+            return fetch('data/tareas.json')
+                .then(resp => resp.json())
+                .then(tasks => tasks.filter(task => task.userId == userId));
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+* {
+    background-color: black;
+    color: white;
+    margin: 10px;
+}
+
+*::selection{
+    background-color: aquamarine;
+    color: black;
+}
+
+select{
+    background-color: lightblue;
+    border-radius: 5%;
+    color: black;
+    padding: 10px;
+    font-size: large;
+    font-weight: bolder;
+}
+
+option{
+    margin: 5px;
+    background-color: black;
+    color: lightblue;
+}
+
+.user-container h3, .task-container h3 {
+    font-size: 30px;
+    font-weight: bolder;
+    border: solid white;
+    background-color: darkblue;
+    background-image: linear-gradient(to right, black,white);
+    padding: 10px;
+}
+
+ul li {
+    font-size: 20px;
+}
+
+input[type='checkbox']{
+    background-color: black;
+    accent-color: black;
+}
+
+input:checked{
+    outline: 2px solid antiquewhite;
+    accent-color: black;
+}
+
+.user-container li span{
+    color: rgb(120, 255, 255);
+    font-weight: 900;
+    font-size: 20px;
+    transition-duration: 0.6s;
+
+}
+
+
+.user-container li span:hover{
+    font-size: 30px;
+    transition-duration: 0.5s;
+    color: rgb(185, 255, 255);
+
+}
+
+.task-container {
+    visibility: hidden;
+}
+
+.btn {
+    font-size: 20px;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    font-size: 25px;
+    background-color: lightblue;
+    color: black;
+    font-weight: 900;
+    padding: 20px;
+    margin-left: 20px;
+    transition-duration: 0.5s;
+}
