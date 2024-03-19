@@ -24,7 +24,7 @@ option{
     color: rgb(31, 132, 165);
 }
 
-.user-container h3, .task-container h3 {
+.userContainer h3, .taskContainer h3 {
     font-size: 30px;
     font-weight: bolder;
     border: solid white;
@@ -47,7 +47,7 @@ input:checked{
     accent-color: black;
 }
 
-.user-container li span{
+.userContainer li span{
     color: rgb(120, 255, 255);
     font-weight: 900;
     font-size: 20px;
@@ -56,14 +56,14 @@ input:checked{
 }
 
 
-.user-container li span:hover{
+.userContainer li span:hover{
     font-size: 30px;
     transition-duration: 0.5s;
     color: rgb(185, 255, 255);
 
 }
 
-.task-container {
+.taskContainer {
     visibility: hidden;
 }
 

@@ -35,18 +35,18 @@
                 <option value="15">Kevin</option>
             </select>
         </section>
-        <section class="user-container" id="user-container">
+        <section class="userContainer" id="userContainer">
             <!-- Elemento de listas como se deben de ver las tareas -->
             <h3>Información del usuario seleccionado</h3>
             <ul>
-                <li>Nombre completo: <span id="fullname">Nombre Apellido</span></li>
-                <li>Email: <span id="email">usuario@dominio.com</span></li>
+                <li>Nombre completo: <span id="fullname"></span></li>
+                <li>Email: <span id="email"></span></li>
             </ul>
             <button class="btn" id="btndisplay">
                 Mostrar lista de tareas
             </button>
         </section>
-        <section class="task-container" id="task-container">
+        <section class="taskContainer" id="taskContainer">
             <!-- Elemento de lista, para mostar las tareas -->
             <h3>Lista de tareas del usuario</h3>
             <ul id="task-list">
@@ -61,8 +61,8 @@
     <script>
         // Elementos HTML
         const userSelect = document.getElementById('select-users');
-        const userContainer = document.getElementById('user-container');
-        const taskContainer = document.getElementById('task-container');
+        const userContainer = document.getElementById('userContainer');
+        const taskContainer = document.getElementById('taskContainer');
         const displayButton = document.getElementById('btndisplay');
         const fullNameElement = document.getElementById('fullname');
         const emailElement = document.getElementById('email');

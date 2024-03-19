@@ -1,7 +1,7 @@
 // Elementos HTML
 const userSelect = document.getElementById('select-users');
-const userContainer = document.getElementById('user-container');
-const taskContainer = document.getElementById('task-container');
+const userContainer = document.getElementById('userContainer');
+const taskContainer = document.getElementById('taskContainer');
 const displayButton = document.getElementById('btndisplay');
 
 // Función para mostrar información cuando se selecciona un usuario
