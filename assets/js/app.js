@@ -7,7 +7,7 @@ const displayButton = document.getElementById('btndisplay');
 // Función para mostrar información cuando se selecciona un usuario
 userSelect.addEventListener('click', () => {
     // Llama a la función para obtener y mostrar la información del usuario
-    getUserInfo(userSelect.value);
+    getUsuarioInfo(userSelect.value);
 });
 
 // Función para cambiar la visibilidad del contenedor de tareas
@@ -20,10 +20,10 @@ displayButton.addEventListener('click', () => {
 });
 
 // Función para obtener y mostrar la información del usuario
-async function getUserInfo(userId) {
+async function getUsuarioInfo(userId) {
     try {
         // Obtiene la información del usuario
-        const userInfo = await getUser(userId);
+        const userInfo = await getUsuario(userId);
 
         // Muestra la información en el contenedor de usuario
         const fullName = userContainer.children[1].children[0].children[0];
@@ -32,7 +32,7 @@ async function getUserInfo(userId) {
         email.textContent = `Tu correo es: ${userInfo.email}`;
 
         // Obtiene y muestra las tareas del usuario
-        const userTasks = await getTasks(userId);
+        const userTasks = await tareas(userId);
         showUserTasks(userTasks);
     } catch (error) {
         console.error('Ocurrió un error al obtener la información del usuario:', error);
@@ -69,26 +69,26 @@ function showUserTasks(tasks) {
 }
 
 // Función para obtener todos los usuarios
-function getAllUsers() {
+function getUsuarios() {
     return fetch('/data/usuarios.json')
         .then(resp => resp.json());
 }
 
 // Función para obtener un usuario por su ID
-function getUser(userId) {
+function getUsuario(userId) {
     return fetch('/data/usuarios.json')
         .then(resp => resp.json())
         .then(users => users.find(user => user.id == userId));
 }
 
 // Función para obtener todas las tareas
-function getAllTasks() {
+function todos() {
     return fetch('/data/tareas.json')
         .then(resp => resp.json());
 }
 
 // Función para obtener las tareas de un usuario por su ID
-function getTasks(userId) {
+function tareas(userId) {
     return fetch('/data/tareas.json')
         .then(resp => resp.json())
         .then(tasks => tasks.filter(task => task.userId == userId));

@@ -71,7 +71,7 @@
         // Event Listener para el cambio de usuario
         userSelect.addEventListener('change', () => {
             const userId = userSelect.value;
-            getUserInfo(userId);
+            getUsuarioInfo(userId);
         });
 
         // Event Listener para mostrar/ocultar la lista de tareas
@@ -80,11 +80,11 @@
         });
 
         // Función para obtener y mostrar la información del usuario
-        async function getUserInfo(userId) {
+        async function getUsuarioInfo(userId) {
             try {
-                const userInfo = await getUser(userId);
+                const userInfo = await getUsuario(userId);
                 showUserInfo(userInfo);
-                const userTasks = await getTasks(userId);
+                const userTasks = await tareas(userId);
                 showUserTasks(userTasks);
             } catch (error) {
                 console.error('Error al obtener la información del usuario:', error);
@@ -114,14 +114,14 @@
         }
 
         // Función para obtener un usuario por su ID
-        function getUser(userId) {
+        function getUsuario(userId) {
             return fetch('data/usuarios.json')
                 .then(resp => resp.json())
                 .then(users => users.find(user => user.id == userId));
         }
 
         // Función para obtener las tareas de un usuario por su ID
-        function getTasks(userId) {
+        function tareas(userId) {
             return fetch('data/tareas.json')
                 .then(resp => resp.json())
                 .then(tasks => tasks.filter(task => task.userId == userId));
