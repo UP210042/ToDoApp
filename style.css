@@ -5,12 +5,12 @@
 }
 
 *::selection{
-    background-color: aquamarine;
+    background-color: rgb(15, 221, 152);
     color: black;
 }
 
 select{
-    background-color: lightblue;
+    background-color: rgb(16, 90, 114);
     border-radius: 5%;
     color: black;
     padding: 10px;
@@ -21,14 +21,14 @@ select{
 option{
     margin: 5px;
     background-color: black;
-    color: lightblue;
+    color: rgb(31, 132, 165);
 }
 
 .user-container h3, .task-container h3 {
     font-size: 30px;
     font-weight: bolder;
     border: solid white;
-    background-color: darkblue;
+    background-color: rgb(226, 121, 0);
     background-image: linear-gradient(to right, black,white);
     padding: 10px;
 }
